@@ -1,0 +1,203 @@
+--make naked elliot
+local elliotshirt = game.workspace.Players.Survivors.Elliot.Shirt
+if elliotshirt then
+    elliotshirt:Destroy()
+else
+    print("no shirt roblox")
+end
+
+local elliotpants = game.workspace.Players.Survivors.Elliot.Pants
+if elliotpants then
+    elliotpants:Destroy()
+else
+    print("no pants elliot roblox")
+end
+
+local elliotcolor = workspace.Players.Survivors.Elliot["Body Colors"]
+
+elliotcolor.RightLegColor = BrickColor.new("New Yeller")
+elliotcolor.LeftLegColor = BrickColor.new("New Yeller")
+elliotcolor.TorsoColor = BrickColor.new("New Yeller")
+---penios maker chatgpt helped adjusted by me
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+local torso = character:FindFirstChild("UpperTorso") or character:FindFirstChild("Torso")
+
+if torso then
+    -- First Ball
+    local ball1 = Instance.new("Part")
+    ball1.Material = Enum.Material.Glass
+    ball1.Size = Vector3.new(0.4, 0.4, 1.5)
+    ball1.Shape = Enum.PartType.Ball
+    ball1.Anchored = false
+    ball1.CanCollide = false
+    ball1.Transparency = 0
+    ball1.Color = Color3.fromRGB(255, 255, 0) -- Yellow
+    ball1.Name = "AttachedBall1"
+    ball1.Parent = torso
+
+    local weld1 = Instance.new("Weld")
+    weld1.Part0 = torso
+    weld1.Part1 = ball1
+    weld1.C0 = CFrame.new(0, -0.8, -1.1) * CFrame.Angles(math.rad(30), 0, 0) -- Ball 1 above torso
+    weld1.Parent = ball1
+    ball1.CFrame = torso.CFrame * weld1.C0
+
+    -- Second Ball
+    local ball2 = Instance.new("Part")
+    ball2.Material = Enum.Material.Glass
+    ball2.Size = Vector3.new(0.5, 0.5, 0.5)
+    ball2.Shape = Enum.PartType.Ball
+    ball2.Anchored = false
+    ball2.CanCollide = false
+    ball2.Transparency = 0
+    ball2.Color = Color3.fromRGB(255, 0, 181) -- Cyan
+    ball2.Name = "AttachedBall2"
+    ball2.Parent = torso
+
+    local weld2 = Instance.new("Weld")
+    weld2.Part0 = torso
+    weld2.Part1 = ball2
+    weld2.C0 = CFrame.new(0, -0.5, -1.6) * CFrame.Angles(math.rad(30), 0, 0) -- Ball 2 to the right of torso
+    weld2.Parent = ball2
+    ball2.CFrame = torso.CFrame * weld2.C0
+
+    print("Attached 2 balls to torso!")
+else
+    warn("Torso not found!")
+end
+----------------chatgpt + iy mixed jerkoff anim
+-- Put this LocalScript in StarterPlayerScripts
+
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+
+local function getCharacter()
+    return player.Character or player.CharacterAdded:Wait()
+end
+
+local function isR15(character)
+    local humanoid = character:FindFirstChildWhichIsA("Humanoid")
+    return humanoid and humanoid.RigType == Enum.HumanoidRigType.R15
+end
+
+local isPlaying = false
+local track = nil
+
+local function playAnimationLoop()
+    if isPlaying then return end -- prevent spam
+    isPlaying = true
+
+    local character = getCharacter()
+    local humanoid = character:WaitForChild("Humanoid")
+
+    -- Stop any existing animation first
+    if track then
+        track:Stop()
+        track = nil
+    end
+
+    local useR15 = isR15(character)
+
+    local anim = Instance.new("Animation")
+    anim.AnimationId = not useR15 and "rbxassetid://72042024" or "rbxassetid://698251653"
+    track = humanoid:LoadAnimation(anim)
+
+    track.Looped = true
+    track:Play()
+    track:AdjustSpeed(useR15 and 0.7 or 0.65)
+    track.TimePosition = 0.6
+
+    -- Loop for 1.5 seconds
+    task.wait(1.5)
+
+    -- Stop animation after 1.5 seconds
+    if track then
+        track:Stop()
+        track = nil
+    end
+
+    isPlaying = false
+end
+
+
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end -- ignore UI input
+    if input.KeyCode == Enum.KeyCode.Q then
+        playAnimationLoop()
+    end
+end)
+
+----delete pizza in hand
+local handpizza = workspace.Players.Survivors.Elliot.Pizza
+local meshpizzahand = handpizza:FindFirstChild("Mesh")
+meshpizzahand:Destroy()
+handpizza.Size = Vector3.new(0, 0, 0)
+
+
+
+
+----chatgpt generated turn pizza into cum
+
+local runLoopValue = Instance.new("BoolValue")
+runLoopValue.Name = "RunPizzaLoop"
+runLoopValue.Value = false
+runLoopValue.Parent = game.Workspace
+
+
+local function setLoopActive(active)
+    runLoopValue.Value = active
+end
+
+
+delay(3, function()
+    setLoopActive(true)
+end)
+
+
+local processedPizzas = {}
+
+
+while true do
+    if runLoopValue.Value == true then
+        local mapFolder = game.workspace:FindFirstChild("Map")
+        if mapFolder then
+            local ingameFolder = mapFolder:FindFirstChild("Ingame")
+            if ingameFolder then
+                for _, pizzaPart in pairs(ingameFolder:GetChildren()) do
+                    
+                    if pizzaPart.Name == "Pizza" and not processedPizzas[pizzaPart] then
+                        processedPizzas[pizzaPart] = true  -- Mark as processed
+                        print("Processing NEW Pizza part:", pizzaPart)
+
+                        
+                        local mesh = pizzaPart:FindFirstChild("Mesh")
+                        if mesh then
+                            mesh:Destroy()
+                            print("Destroyed mesh in pizza:", pizzaPart)
+                        else
+                            print("No mesh found in pizza:", pizzaPart)
+                        end
+
+                        
+                        pizzaPart.Shape = Enum.PartType.Block
+
+                       
+                        local sphereMesh = Instance.new("SpecialMesh")
+                        sphereMesh.MeshType = Enum.MeshType.Sphere
+                        sphereMesh.Scale = Vector3.new(1, 0.1, 1)  
+                        sphereMesh.Parent = pizzaPart
+
+
+                       
+                        pizzaPart.BrickColor = BrickColor.new("Institutional white")
+                    end
+                end
+            end
+        end
+    end
+    wait() 
+end
